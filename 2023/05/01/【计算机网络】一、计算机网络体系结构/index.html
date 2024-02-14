@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="ch">
+    <head>
+  <!-- 元数据 -->
+  <meta charset="utf-8">
+  
+  
+  <title>【计算机网络】一、计算机网络体系结构 | 晚秋</title>
+  
+  <meta name="author" content="qiu sir" />
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="robots" content="index,follow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="format-detection" content="telphone=no, email=no" />
+  
+    <meta name="keywords" content="计算机网络" />
+  
+  <meta name="description" content="一、计算机网络概述1. 概念1.1网络 网络  网状的东西或网状的系统，蜘蛛网、计算机网络。   计算机网络  将分散的、具有独立功能的计算机系统，通过通信设备与线路连接，由功能完善的软件，实现资源共享和信息传递的系统。    2. 组成2.1 组成部分 硬件  硬件通常只各种网络设备，如路由器，交换机，服务器。   软件  提供一些特定服务的应用程序，如QQ，B站。   协议  硬件与硬件直接交">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【计算机网络】一、计算机网络体系结构">
+<meta property="og:url" content="http://blog.mengdanya.top/2023/05/01/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E3%80%91%E4%B8%80%E3%80%81%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/index.html">
+<meta property="og:site_name" content="晚秋">
+<meta property="og:description" content="一、计算机网络概述1. 概念1.1网络 网络  网状的东西或网状的系统，蜘蛛网、计算机网络。   计算机网络  将分散的、具有独立功能的计算机系统，通过通信设备与线路连接，由功能完善的软件，实现资源共享和信息传递的系统。    2. 组成2.1 组成部分 硬件  硬件通常只各种网络设备，如路由器，交换机，服务器。   软件  提供一些特定服务的应用程序，如QQ，B站。   协议  硬件与硬件直接交">
+<meta property="og:locale">
+<meta property="og:image" content="http://blog.mengdanya.top/2023/05/01/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E3%80%91%E4%B8%80%E3%80%81%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/liyonglv.png">
+<meta property="article:published_time" content="2023-04-30T17:03:00.000Z">
+<meta property="article:modified_time" content="2024-02-14T16:45:00.821Z">
+<meta property="article:author" content="qiu sir">
+<meta property="article:tag" content="计算机网络">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://blog.mengdanya.top/2023/05/01/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E3%80%91%E4%B8%80%E3%80%81%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/liyonglv.png">
+  
+  <!-- 站点验证相关 -->
+  
+    
+    
+    
+  
+  <!-- 样式表文件 -->
+  <link rel="stylesheet" id="kratos-css" href="/css/kratosr.min.css" media="all"></script>
+  
+    <link rel="stylesheet" id="darkmode-css" href="/css/kr-color-dark.min.css" media="(prefers-color-scheme: dark)"></script>
+    <script src="/js/kr-dark.min.js"></script>
+  
+  
+    <link rel="stylesheet" id="highlight-css" href="/css/highlight/night-eighties.min.css" media="all"></script>
+  
+  <link rel="stylesheet" id="fontawe-css" href="/vendors/font-awesome@4.7.0/css/font-awesome.min.css" media="all"></script>
+  <link rel="stylesheet" id="nprogress-css" href="/vendors/nprogress@0.2.0/nprogress.css" media="all"></script>
+  
+  
+    <link rel="stylesheet" href="/vendors/aplayer@1.10.1/dist/APlayer.min.css"></script>
+  
+  
+    <link rel="stylesheet" href="/vendors/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css"></script>
+  
+  <!-- 不得不预先加载的一些JS文件 -->
+  <script src="/vendors/jquery@3.6.0/dist/jquery.min.js"></script>
+  
+    <script src="/vendors/qrcode_js@1.0.0/qrcode.min.js"></script>
+  
+  
+  <style>
+    
+    
+  </style>
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+    <body class="custom-background">
+        <div id="kratos-wrapper">
+    <div id="kratos-page">
+        <div id="kratos-header">
+            <header id="kratos-desktop-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="nav-header">
+                        <nav id="kratos-menu-wrap">
+                            <ul id="kratos-primary-menu" class="sf-menu">
+                                
+                                    
+                                    
+                                
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+            <header id="kratos-mobile-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="color-logo"><a href="/">晚秋</a></div>
+                    <div class="nav-toggle">
+                        <a class="kratos-nav-toggle js-kratos-nav-toggle">
+                            <i></i>
+                        </a>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <div class="kratos-start kratos-hero-2">
+            <!-- <div class="kratos-overlay"></div> -->
+            <div class="kratos-cover kratos-cover-2 text-center">
+                <div class="desc desc2 animate-box">
+                    <a href="/">
+                        <h2>晚秋</h2> <br />
+                        <span>秋先生的笔记本</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="kratos-blog-post">
+            <div class="container">
+                <div id="main" class="row">
+                    
+
+        
+
+            <section class="col-md-8">
+
+        
+
+            <article itemscope itemtype="https://schema.org/Article">
+    
+    <link itemprop="mainEntityOfPage" href="http://blog.mengdanya.top/2023/05/01/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E3%80%91%E4%B8%80%E3%80%81%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">
+    <div class="kratos-hentry kratos-post-inner clearfix">
+        <header class="kratos-entry-header">
+            
+                <h1 class="kratos-entry-title text-center" itemprop="name headline">【计算机网络】一、计算机网络体系结构</h1>
+            
+            
+            <ul class="kratos-post-meta text-center">
+                <li><time datetime="2023-04-30T17:03:00.000Z" itemprop="datePublished"><i class="fa fa-calendar"></i> 2023-05-01</time></li>
+                <li itemprop="author" itemscope itemtype="https://schema.org/Person">
+                    <i class="fa fa-user"></i> 作者 <span itemprop="name">qiu sir</span>
+                </li>
+                
+                    <li>
+                        <i class="fa fa-edit"></i> 
+                        
+                        
+                            1182
+                        
+                        字
+                    </li>
+                
+                
+            </ul>
+        </header>
+        <div class="kratos-post-content">
+            
+            <div id="expire-alert" class="alert alert-warning hidden" role="alert">
+                <div class="icon"><i class="fa fa-warning"></i></div>
+                <div class="text"><p>本文最后编辑于 <time datetime="1707929100821"></time> 前，其中的内容可能需要更新。</p></div>
+            </div>
+            
+            
+            
+            <hr />
+            <div itemprop="articleBody"><h3 id="一、计算机网络概述"><a href="#一、计算机网络概述" class="headerlink" title="一、计算机网络概述"></a>一、计算机网络概述</h3><h4 id="1-概念"><a href="#1-概念" class="headerlink" title="1. 概念"></a>1. 概念</h4><h5 id="1-1网络"><a href="#1-1网络" class="headerlink" title="1.1网络"></a>1.1网络</h5><ul>
+<li><p>网络</p>
+<blockquote>
+<p>网状的东西或网状的系统，蜘蛛网、计算机网络。</p>
+</blockquote>
+</li>
+<li><p>计算机网络</p>
+<blockquote>
+<p>将<strong>分散的</strong>、<strong>具有独立功能</strong>的计算机系统，通过<strong>通信设备与线路</strong>连接，由功能完善的软件，实现<strong>资源共享</strong>和<strong>信息传递</strong>的系统。</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="2-组成"><a href="#2-组成" class="headerlink" title="2. 组成"></a>2. 组成</h4><h5 id="2-1-组成部分"><a href="#2-1-组成部分" class="headerlink" title="2.1 组成部分"></a>2.1 组成部分</h5><ul>
+<li><p>硬件</p>
+<blockquote>
+<p>硬件通常只各种网络设备，如路由器，交换机，服务器。</p>
+</blockquote>
+</li>
+<li><p>软件</p>
+<blockquote>
+<p>提供一些特定服务的应用程序，如QQ，B站。</p>
+</blockquote>
+</li>
+<li><p>协议</p>
+<blockquote>
+<p>硬件与硬件直接交换数据的格式约定，如TCP&#x2F;IP，UDP，HTTP。</p>
+</blockquote>
+</li>
+</ul>
+<h5 id="2-2-工作方式"><a href="#2-2-工作方式" class="headerlink" title="2.2 工作方式"></a>2.2 工作方式</h5><ul>
+<li><p>边缘部分</p>
+<ul>
+<li>C&#x2F;S方式（客户端&#x2F;服务端）</li>
+</ul>
+<blockquote>
+<p>例如：微信发送消息，发送消息的手机就可以称为客户端，服务器便是服务端，而接受消息的手机就也是客户端。</p>
+</blockquote>
+<ul>
+<li>B&#x2F;S方式（浏览器&#x2F;服务端）</li>
+</ul>
+<blockquote>
+<p>我们在浏览器看B站就是一个很好的交互例子.</p>
+</blockquote>
+<ul>
+<li>P2P方式（端对端）</li>
+</ul>
+<blockquote>
+<p>P2P经常被用在文件传输，熟知的是磁力链接下载。P2P允许将一个客户端同时作为服务端使用，A用户下载了一份文件，B用户在下载时，允许从A用户那里下载，而不用直接访问服务器。</p>
+</blockquote>
+<ul>
+<li>核心部分</li>
+</ul>
+<blockquote>
+<p>进程与进程、端到端通信</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="3-功能"><a href="#3-功能" class="headerlink" title="3. 功能"></a>3. 功能</h4><ul>
+<li>数据通信<blockquote>
+<p>多个设备之间互相传递消息，如发QQ消息、接口调用。</p>
+</blockquote>
+</li>
+<li>资源共享<blockquote>
+<p>文件下载</p>
+</blockquote>
+</li>
+<li>分布式处理<blockquote>
+<p>多个计算机承担同一个工作任务</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="4-分类"><a href="#4-分类" class="headerlink" title="4. 分类"></a>4. 分类</h4><ul>
+<li><p>按分布范围</p>
+<ul>
+<li>广域网WAN</li>
+<li>城域网MAN</li>
+<li>局域网LAN</li>
+<li>个人区域网PAN</li>
+</ul>
+</li>
+<li><p>按使用者</p>
+<ul>
+<li>公用网：中国电信、中国移动</li>
+<li>专用网：军队、政府机关使用</li>
+</ul>
+</li>
+<li><p>按交换技术</p>
+<ul>
+<li>电路交换</li>
+</ul>
+<blockquote>
+<p>例如打电话，A打电话给B，在建立连接后，其他人无法使用该连接。</p>
+</blockquote>
+<ul>
+<li>报文交换</li>
+</ul>
+<blockquote>
+<p>将整段报文进行发送。</p>
+</blockquote>
+<ul>
+<li>分组交换</li>
+</ul>
+<blockquote>
+<p>将报文切片分组，将数据存储，并转发到下一个路由。</p>
+</blockquote>
+</li>
+<li><p>按拓扑结构</p>
+<ul>
+<li>总线型</li>
+<li>星型</li>
+<li>环型</li>
+<li>网状型</li>
+</ul>
+</li>
+<li><p>按传输技术<br>- 广播式网络<br><br>&gt; 共享公共通信信道<br><br>- 点对点网络<br><br>&gt; 使用分组存储转发和路由选择机制，由一端发送到另一端，其他人不会收到消息。</p>
+</li>
+</ul>
+<h4 id="5-性能指标"><a href="#5-性能指标" class="headerlink" title="5. 性能指标"></a>5. 性能指标</h4><ul>
+<li>速率</li>
+</ul>
+<blockquote>
+<p>速率即数据率或称数据传输率或比特率。<br>单位：b&#x2F;s，kb&#x2F;s, Mb&#x2F;s, Gb&#x2F;s, Tb&#x2F;s 。<br>速率换算单位是10^3。</p>
+</blockquote>
+<ul>
+<li>吞吐量</li>
+</ul>
+<blockquote>
+<p>表示在单位时间内通过某个网络的数据量。</p>
+</blockquote>
+<ul>
+<li>时延</li>
+</ul>
+<blockquote>
+<p>指数据（报文&#x2F;分组&#x2F;比特流）从网络的一端传送到另一端所需的时间。也叫延迟或迟延，是描述时间的性能指标。单位：s</p>
+</blockquote>
+<ul>
+<li>往返时延RTT</li>
+</ul>
+<blockquote>
+<p>从发送方发送数据开始，到发送方收到接收方的确认，总共经历的时延。</p>
+</blockquote>
+<ul>
+<li>利用率</li>
+</ul>
+<p><img src="/2023/05/01/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E3%80%91%E4%B8%80%E3%80%81%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/liyonglv.png"></p>
+<h3 id="二、体系结构-参考模型"><a href="#二、体系结构-参考模型" class="headerlink" title="二、体系结构&amp;参考模型"></a>二、体系结构&amp;参考模型</h3><h4 id="1-分层结构"><a href="#1-分层结构" class="headerlink" title="1. 分层结构"></a>1. 分层结构</h4><h4 id="2-协议、接口、服务"><a href="#2-协议、接口、服务" class="headerlink" title="2. 协议、接口、服务"></a>2. 协议、接口、服务</h4><h4 id="3-ISO-OSI模型"><a href="#3-ISO-OSI模型" class="headerlink" title="3. ISO&#x2F;OSI模型"></a>3. ISO&#x2F;OSI模型</h4><h4 id="4-TCP-IP模型"><a href="#4-TCP-IP模型" class="headerlink" title="4. TCP&#x2F;IP模型"></a>4. TCP&#x2F;IP模型</h4></div>
+        </div>
+        
+            <div class="kratos-copyright text-center clearfix">
+                <h5 itemprop="copyrightNotice">本作品采用 <a rel="license nofollow" target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/">知识共享署名-相同方式共享 4.0 国际许可协议</a> 进行许可</h5>
+            </div>
+        
+        <footer class="kratos-entry-footer clearfix">
+            
+                <div class="post-like-donate text-center clearfix" id="post-like-donate">
+                
+                
+                    <a class="share" href="javascript:;"><i class="fa fa-share-alt"></i> 分享</a>
+                    <div class="share-wrap" style="display: none;">
+    <div class="share-group">
+        <a href="javascript:;" class="share-plain qq" onclick="share('qq');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-qq"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain qzone" onclick="share('qzone');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-star"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weixin pop style-plain" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weixin"></i>
+            </div>
+            <div class="share-int">
+                <div class="qrcode" id="wechat-qr"></div>
+                <p>打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮</p>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weibo" onclick="share('weibo');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weibo"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain facebook style-plain" onclick="share('facebook');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-facebook"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain twitter style-plain" onclick="share('twitter');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-twitter"></i>
+            </div>
+        </a>
+    </div>
+    <script type="text/javascript">
+        $(()=>{
+            new QRCode("wechat-qr", {
+                text: "http://blog.mengdanya.top/2023/05/01/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E3%80%91%E4%B8%80%E3%80%81%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/",
+                width: 150,
+                height: 150,
+                correctLevel : QRCode.CorrectLevel.H
+            });
+        });
+        function share(dest) {
+            const qqBase        = "https://connect.qq.com/widget/shareqq/index.html?";
+            const weiboBase     = "https://service.weibo.com/share/share.php?";
+            const qzoneBase     = "https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?";
+            const facebookBase  = "https://www.facebook.com/sharer/sharer.php?";
+            const twitterBase   = "https://twitter.com/intent/tweet?";
+            const hostUrl       = "http://blog.mengdanya.top/2023/05/01/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E3%80%91%E4%B8%80%E3%80%81%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/";
+            const title         = "「【计算机网络】一、计算机网络体系结构」";
+            const excerpt       = `一、计算机网络概述1. 概念1.1网络
+网络
+
+网状的东西或网状的系统，蜘蛛网、计算机网络。
+
+
+计算机网络
+
+将分散的、具有独立功能的计算机系统，通过通信设备与线路连接，由功能完善的软件，实现资源共享和信息传递的系统。
+
+
+
+2. ...`;
+            let _URL;
+            switch (dest) {
+                case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
+                case "weibo"    : _URL = weiboBase+"url="+hostUrl+"&title="+title+excerpt;                                 break;
+                case "qzone"    : _URL = qzoneBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";  break;
+                case "facebook" : _URL = facebookBase+"u="+hostUrl;                                                        break;
+                case "twitter"  : _URL = twitterBase+"text="+title+excerpt+"&url="+hostUrl;                                break;
+            }
+            window.open(_URL);
+        };
+    </script>
+</div>
+                
+                </div>
+            
+            <div class="footer-tag clearfix">
+                <div class="pull-left">
+                <i class="fa fa-tags"></i>
+                    <a class="tag-none-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a>
+                </div>
+                <div class="pull-date">
+                    <time datetime="2024-02-14T16:45:00.821Z" itemprop="dateModified">最后编辑：2024-02-15</time>
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+        <nav class="navigation post-navigation clearfix" role="navigation">
+            
+            <div class="nav-previous clearfix">
+                <a title=" 常用服务容器搭建命令" href="/2023/04/01/常用服务容器搭建命令/">&lt; 上一篇</a>
+            </div>
+            
+            
+            <div class="nav-next clearfix">
+                <a title=" 【docker】docker-composer" href="/2023/09/22/【docker】docker-composer/">下一篇 &gt;</a>
+            </div>
+            
+        </nav>
+    
+    
+</article>
+
+        
+
+            </section>
+
+        
+
+                
+            
+
+<section id="kratos-widget-area" class="col-md-4 hidden-xs hidden-sm">
+    <!-- 文章和页面根据splitter来分割，没有的话就从头开始设置为sticky -->
+    
+    
+                <aside id="krw-about" class="widget widget-kratos-about clearfix">
+    <div class="photo-background"></div>
+    <div class="photo-wrapper clearfix">
+        <div class="photo-wrapper-tip text-center">
+            <img class="about-photo" src="/images/avatar.webp" loading="lazy" decoding="auto" />
+        </div>
+    </div>
+    <div class="textwidget">
+        <p class="text-center">不过是些许风霜罢了</p>
+    </div>
+    <div class="site-meta">
+        <a class="meta-item" href="/archives/">
+            <span class="title">
+                文章
+            </span>
+            <span class="count">
+                3
+            </span>
+        </a>
+        <a class="meta-item" href="/categories/">
+            <span class="title">
+                分类
+            </span>
+            <span class="count">
+                0
+            </span>
+        </a>
+        <a class="meta-item" href="/tags/">
+            <span class="title">
+                标签
+            </span>
+            <span class="count">
+                2
+            </span>
+        </a>
+    </div>
+</aside>
+            
+                    <div class="sticky-area">
+                
+                
+
+            
+                
+  <aside id="krw-tags" class="widget widget-kratos-tags clearfix">
+    <h4 class="widget-title"><i class="fa fa-tags"></i>标签聚合</h4>
+      <div class="tag-clouds">
+        <a href="/tags/docker/" style="font-size: 0.8em;">docker</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 0.6em;">计算机网络</a>
+      </div>
+  </aside>
+
+            
+                
+  <aside id="krw-posts" class="widget widget-kratos-posts">
+  <h4 class="widget-title"><i class="fa fa-file"></i>最新文章</h4>
+  <div class="tab-content">
+      <ul class="list-group">
+        
+        
+          
+          
+            <a class="list-group-item" href="/2023/09/22/%E3%80%90docker%E3%80%91docker-composer/"><i class="fa  fa-book"></i> 【docker】docker-composer</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2023/05/01/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E3%80%91%E4%B8%80%E3%80%81%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/"><i class="fa  fa-book"></i> 【计算机网络】一、计算机网络体系结构</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2023/04/01/%E5%B8%B8%E7%94%A8%E6%9C%8D%E5%8A%A1%E5%AE%B9%E5%99%A8%E6%90%AD%E5%BB%BA%E5%91%BD%E4%BB%A4/"><i class="fa  fa-book"></i> 常用服务容器搭建命令</a>
+            
+          
+        
+      </ul>
+  </div>
+  </aside>
+
+            
+    </div>
+</section>
+        
+        </div>
+    </div>
+</div>
+<footer>
+    <div id="footer"  class="ap-lrc"  >
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 footer-list text-center">
+                    <ul class="kratos-social-icons">
+                        <!-- Keep for compatibility -->
+                        
+                        <li><a href="mailto:1197655177@qq.com"><i class="fa fa-envelope"></i></a></li>
+                        
+                        
+                        
+                        
+                        
+                        <li><a target="_blank" rel="nofollow" href="https://github.com/https://github.com/nanchengyimeng"><i class="fa fa-github"></i></a></li>
+                        
+                        <!-- New links -->
+                        
+                    </ul>
+                    <ul class="kratos-copyright">
+                        <div>
+                            <li>&copy; 2024 晚秋 版权所有.</li>
+                            <li>本站已运行<span id="span_dt">Loading...</span></li>
+                        </div>
+                        <div>
+                            <li>Theme <a href="https://github.com/Candinya/Kratos-Rebirth" target="_blank">Kratos:Rebirth</a></li>
+                            <li>Site built with&nbsp;<i class="fa fa-heart throb" style="color:#d43f57"></i>&nbsp;by qiu sir.</li>
+                        </div>
+                        <div>
+                            <li>Powered by <a href="https://hexo.io" target="_blank" rel="nofollow">Hexo</a></li>
+                            <li>Hosted on <a href="https://github.com/nanchengyimeng" target="_blank">Github Pages</a></li>
+                        </div>
+                        <div>
+                            <li><a href="https://beian.miit.gov.cn" rel="external nofollow" target="_blank">青ICP备2022000071号-1</a></li>
+                            
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="kr-tool text-center">
+            <div class="tool">
+                
+                    <div class="box search-box">
+                        <a href="/search/">
+                            <span class="fa fa-search"></span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="box theme-box" id="darkmode-switch">
+                        <span class="fa fa-adjust"></span>
+                    </div>
+                
+                
+                    <div class="box theme-box" id="snow-switch">
+                        <span class="fa fa-snowflake-o"></span>
+                    </div>
+                
+                
+            </div>
+            <div class="box gotop-box">
+                <span class="fa fa-chevron-up"></span>
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
+</div>
+
+        <script defer src="/vendors/bootstrap@3.3.4/dist/js/bootstrap.min.js"></script>
+<script defer src="/vendors/nprogress@0.2.0/nprogress.js"></script>
+<script>
+    if (!window.kr) {
+        window.kr = {};
+    }
+    window.kr.notMobile = (!(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)));
+    window.kr.siteRoot = "/";
+</script>
+
+    <div>
+        <canvas id="snow"></canvas>
+        <script async src="/js/snow.min.js"></script>
+    </div>
+
+
+    <script async src="/js/candy.min.js"></script>
+
+
+
+    <script defer src="/vendors/aplayer@1.10.1/dist/APlayer.min.js"></script>
+    
+    <script defer src="/vendors/meting@2.0.1/dist/Meting.min.js"></script>
+    <meting-js
+        server="netease"
+        type="playlist"
+        id="3204190542"
+        order="random"
+        fixed="true"
+    >
+    </meting-js>
+
+
+
+    <script defer src="/vendors/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+<script defer src="/js/kratosr.min.js"></script>
+<script defer src="/js/pjax.min.js"></script>
+
+
+
+<!-- Extra support for third-party plguins  -->
+
+
+    </body>
+</html>
