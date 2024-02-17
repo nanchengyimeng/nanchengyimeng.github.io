@@ -4,6 +4,33 @@
     <title>【docker】docker-composer</title>
     <url>/2023/09/22/%E3%80%90docker%E3%80%91docker-composer/</url>
     <content><![CDATA[]]></content>
+      <categories>
+        <category>后端</category>
+        <category>docker</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>docker常用容器搭建命令</title>
+    <url>/2023/04/01/%E5%B8%B8%E7%94%A8%E6%9C%8D%E5%8A%A1%E5%AE%B9%E5%99%A8%E6%90%AD%E5%BB%BA%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<blockquote>
+<p>该文章只为了记录命令，用于常规开发使用，不讲解参数含义。</p>
+</blockquote>
+<h3 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a>mysql</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=mengdan --network=mengdan -d mysql:latest</span><br></pre></td></tr></table></figure>
+
+<h3 id="redis"><a href="#redis" class="headerlink" title="redis"></a>redis</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -p 6379:6379 --name redis -d --network=mengdan redis:latest redis-server</span><br></pre></td></tr></table></figure>
+
+<h3 id="etcd"><a href="#etcd" class="headerlink" title="etcd"></a>etcd</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -d --name etcd-server --network mengdan --publish 2379:2379 --publish 2380:2380 --<span class="built_in">env</span> ALLOW_NONE_AUTHENTICATION=<span class="built_in">yes</span> --<span class="built_in">env</span> ETCD_ADVERTISE_CLIENT_URLS=http://127.0.0.1:2379 bitnami/etcd:latest</span><br><span class="line">docker run -it --<span class="built_in">rm</span> --network mengdan --<span class="built_in">env</span> ALLOW_NONE_AUTHENTICATION=<span class="built_in">yes</span> bitnami/etcd:latest etcdctl --endpoints http://127.0.0.1:2379 <span class="built_in">set</span> /message Hello</span><br></pre></td></tr></table></figure>
+
+<h3 id="rabbitmq"><a href="#rabbitmq" class="headerlink" title="rabbitmq"></a>rabbitmq</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -d --name rabbitmq-server -e  RABBITMQ_DEFAULT_USER=mengdan -e RABBITMQ_DEFAULT_PASS=mengdan -p 15672:15672 -p 5672:5672 --network mengdan --network-alias rabbitmq_server f2236</span><br></pre></td></tr></table></figure>
+
+<h3 id="mongodb"><a href="#mongodb" class="headerlink" title="mongodb"></a>mongodb</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -d  -p 27017:27017 --network mengdan --network-alias mongo_server  --name mongodb -e MONGO_INITDB_ROOT_USERNAME=mengdan -e MONGO_INITDB_ROOT_PASSWORD=mengdan mongo</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>后端</category>
+        <category>docker</category>
+      </categories>
       <tags>
         <tag>docker</tag>
       </tags>
@@ -157,24 +184,12 @@
 </ul>
 <p><img src="/2023/05/01/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E3%80%91%E4%B8%80%E3%80%81%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/liyonglv.png"></p>
 <h3 id="二、体系结构-参考模型"><a href="#二、体系结构-参考模型" class="headerlink" title="二、体系结构&amp;参考模型"></a>二、体系结构&amp;参考模型</h3><h4 id="1-分层结构"><a href="#1-分层结构" class="headerlink" title="1. 分层结构"></a>1. 分层结构</h4><h4 id="2-协议、接口、服务"><a href="#2-协议、接口、服务" class="headerlink" title="2. 协议、接口、服务"></a>2. 协议、接口、服务</h4><h4 id="3-ISO-OSI模型"><a href="#3-ISO-OSI模型" class="headerlink" title="3. ISO&#x2F;OSI模型"></a>3. ISO&#x2F;OSI模型</h4><h4 id="4-TCP-IP模型"><a href="#4-TCP-IP模型" class="headerlink" title="4. TCP&#x2F;IP模型"></a>4. TCP&#x2F;IP模型</h4>]]></content>
+      <categories>
+        <category>后端</category>
+        <category>计算机网络</category>
+      </categories>
       <tags>
         <tag>计算机网络</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>常用服务容器搭建命令</title>
-    <url>/2023/04/01/%E5%B8%B8%E7%94%A8%E6%9C%8D%E5%8A%A1%E5%AE%B9%E5%99%A8%E6%90%AD%E5%BB%BA%E5%91%BD%E4%BB%A4/</url>
-    <content><![CDATA[<h3 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a>mysql</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=mengdan --network=mengdan -d mysql:latest</span><br></pre></td></tr></table></figure>
-
-<h3 id="redis"><a href="#redis" class="headerlink" title="redis"></a>redis</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -p 6379:6379 --name redis -d --network=mengdan redis:latest redis-server</span><br></pre></td></tr></table></figure>
-
-<h3 id="etcd"><a href="#etcd" class="headerlink" title="etcd"></a>etcd</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -d --name etcd-server --network mengdan --publish 2379:2379 --publish 2380:2380 --<span class="built_in">env</span> ALLOW_NONE_AUTHENTICATION=<span class="built_in">yes</span> --<span class="built_in">env</span> ETCD_ADVERTISE_CLIENT_URLS=http://127.0.0.1:2379 bitnami/etcd:latest</span><br><span class="line">docker run -it --<span class="built_in">rm</span> --network mengdan --<span class="built_in">env</span> ALLOW_NONE_AUTHENTICATION=<span class="built_in">yes</span> bitnami/etcd:latest etcdctl --endpoints http://127.0.0.1:2379 <span class="built_in">set</span> /message Hello</span><br></pre></td></tr></table></figure>
-
-<h3 id="rabbitmq"><a href="#rabbitmq" class="headerlink" title="rabbitmq"></a>rabbitmq</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -d --name rabbitmq-server -e  RABBITMQ_DEFAULT_USER=mengdan -e RABBITMQ_DEFAULT_PASS=mengdan -p 15672:15672 -p 5672:5672 --network mengdan --network-alias rabbitmq_server f2236</span><br></pre></td></tr></table></figure>
-
-<h3 id="mongodb"><a href="#mongodb" class="headerlink" title="mongodb"></a>mongodb</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -d  -p 27017:27017 --network mengdan --network-alias mongo_server  --name mongodb -e MONGO_INITDB_ROOT_USERNAME=mengdan -e MONGO_INITDB_ROOT_PASSWORD=mengdan mongo</span><br></pre></td></tr></table></figure>]]></content>
-      <tags>
-        <tag>docker</tag>
       </tags>
   </entry>
 </search>
